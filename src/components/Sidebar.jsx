@@ -25,15 +25,24 @@ function Sidebar() {
                     <div className="links">
                         <ul>
                             <li
-                            className={currentLink === 1 ? "active" : "none"}
+                                
                             onClick={() => setCurrentLink(1)}
                             >
-                                <a href="#">
+                                <a href="/">
                                     <BiHomeAlt />
                                     
                                 </a>
                             </li>
-                            <li
+                        <li
+                            className={currentLink === 2 ? "active" : "none"}
+                            onClick={() => setCurrentLink(3)}
+                        >
+                            <a href="/add-mov">
+                                <AiOutlineFileText />
+
+                            </a>
+                        </li>
+                            {/*   <li
                             className={currentLink === 2 ? "active" : "none"}
                             onClick={() => setCurrentLink(2)}
                             >
@@ -41,26 +50,18 @@ function Sidebar() {
                                     <AiOutlineFundProjectionScreen />
                                     
                                 </a>
-                            </li>
-                            <li
-                            className={currentLink === 3 ? "active" : "none"}
-                            onClick={() => setCurrentLink(3)}
-                            >
-                                <a href="#">
-                                    <AiOutlineFileText />
-                                    
-                                </a>
-                            </li>
+                            </li> */}
+                           
                             <li
                             className={currentLink === 4 ? "active" : "none"}
                             onClick={() => setCurrentLink(4)}
                             >
-                                <a href="#">
+                                <a href="/add-card">
                                     <BsCreditCard2Front />
                             
                                 </a>
                             </li>
-                            <li
+                            {/* <li
                             className={currentLink === 5 ? "active" : "none"}
                             onClick={() => setCurrentLink(5)}
                             >
@@ -77,7 +78,7 @@ function Sidebar() {
                                     <AiOutlineDotChart />
                                     
                                 </a>
-                            </li>
+                            </li>   */}
                           
                         </ul>
                     </div>

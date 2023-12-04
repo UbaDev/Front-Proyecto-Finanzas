@@ -1,33 +1,80 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { AiOutlineDollarCircle } from "react-icons/ai";
 
 
 function Activity() {
+
+      const [transactions, setTransactions] = useState([]);
+
+      useEffect(() => {
+        const fetchTransactions = async () => {
+          try {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+              throw new Error("Token de autenticación no encontrado");
+            }
+
+            const response = await fetch(
+              "http://localhost:3000/api/obtain-transaction",
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error(
+                `Error al obtener tarjetas: ${response.statusText}`
+              );
+            }
+
+            const data = await response.json();
+            setTransactions(data.transactions);
+          } catch (error) {
+            console.error(error.message);
+          }
+        };
+
+        fetchTransactions();
+      }, []);
+      console.log(transactions);
+
+      
     return (
-        <Section>
-            <div className='title'>
-                <h4>Actividades recientes</h4>
-                <h6>Fecha</h6>
-            </div>
-        <div className="analytic ">
-            <div className="design">
+      <Section>
+        <div className="title">
+          <h4>Actividades recientes</h4>
+          {transactions.length === 0 && <h6>No hay transacciones</h6>}
+        </div>
+        {transactions.map((transaction) => (
+          <a style={{textDecoration: "none"}} href="/add-mov">
+            <div className="analytic ">
+              <div className="design">
                 <div className="logo">
-                        <AiOutlineDollarCircle />
+                  <AiOutlineDollarCircle />
                 </div>
                 <div className="content">
-                    <h5>Cuenta de agua</h5>
-                    <h5 className='color'>Pagada</h5>
+                  <h5>{transaction.nombre}</h5>
+                  <h6 className="color">{transaction.estatus}</h6>
                 </div>
-               
+              </div>
+              <div className="money">
+                <h5>
+                  $
+                  {parseFloat(transaction.saldoAPagar)
+                    .toFixed(2)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") ?? 0.0}{" "}
+                </h5>
+              </div>
             </div>
-            <div className="money">
-                    <h5>$120.00</h5>
-                </div>
-          
-        </div>
-    </Section>
-    )
+          </a>
+        ))}
+      </Section>
+    );
 }
 
 export default Activity

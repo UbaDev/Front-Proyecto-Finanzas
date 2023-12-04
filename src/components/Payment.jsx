@@ -7,24 +7,6 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 function Payment() {
     return (
         <Section>
-            <div className='title'>
-                <h4>Pagos por venir</h4>
-                <h6>Fecha</h6>
-            </div>
-        <div className="analytic ">
-            <div className="design">
-                <div className="logo">
-                        <AiOutlineDollarCircle />
-                </div>
-                <div className="content">
-                    <h5>Renta de casa</h5>
-                    <h5 className='color'>Pendiente</h5>
-                </div>           
-            </div>
-            <div className="money">
-                    <h5>$1500.00</h5>                 
-            </div>         
-        </div>
     </Section>
     )
 }

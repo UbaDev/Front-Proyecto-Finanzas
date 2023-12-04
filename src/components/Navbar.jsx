@@ -9,10 +9,10 @@ function Navbar() {
                     <h1>Tablero</h1>
                     <h5>Actualización de pagos</h5>
                 </div>
-                <div className="search">
+               {/*  <div className="search">
                     <BiSearch />
                     <input type="text" placeholder="Buscar" />
-                </div>
+                </div> */}
         </Nav>
     )
 }
