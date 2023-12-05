@@ -120,7 +120,7 @@ export const FormAddMov = () => {
     };
 
     fetchTransactions();
-  }, [ ]);
+  }, [searchTerm, transactions]);
 
    const handleDeleteTransaction = async (transactionId) => {
      try {
