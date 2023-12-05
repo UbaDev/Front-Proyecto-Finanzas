@@ -128,7 +128,7 @@ export const FormAddCard = () => {
                 {card.nombre}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {card.numero}
+                {card.numero.replace(/(\d{4})/g, '$1 ')}
               </Typography>
 
               <Typography sx={{ mb: 0 }} color="text.secondary">
@@ -165,7 +165,7 @@ const NestedModal = () => {
   const validationSchema = Yup.object({
     nombre: Yup.string().required("Campo requerido"),
     numero: Yup.string()
-      .length(19, "Debe tener 16 dígitos")
+      .length(16, "Debe tener 16 dígitos")
       .required("Campo requerido"),
     fecha: Yup.string()
       .matches(/^(0[1-9]|1[0-2])\/\d{2}$/, "Formato inválido (MM/YY)")

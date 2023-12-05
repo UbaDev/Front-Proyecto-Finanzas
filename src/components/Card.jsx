@@ -50,7 +50,8 @@ function Card() {
             </div>
 
             <div className="number">
-              <h6>{card.numero ?? ""}</h6>
+              
+              <h6>{card.numero.replace(/(\d{4})/g, '$1 ') ?? ""}</h6>
             </div>
             <div className="image">
               <img src={mastercard} className="pic" />
